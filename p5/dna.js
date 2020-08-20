@@ -9,28 +9,28 @@ function draw() {
   for (let i = 0; i < 800; i++) {
     strokeWeight(2);
     fill(
-      50,
-      map(xa1(t + i), -100, 100, 0, 200),
-      map(xa2(t + i), -100, 100, 0, 200)
+      map(xa1(t + i), -100, 100, 0, 97),
+      map(xa1(t + i), -100, 100, 0, 97),
+      map(xa2(t + i), -100, 100, 0, 97)
     );
     stroke(
-      50,
-      map(xa1(t + i), -100, 100, 0, 200),
-      map(xa2(t + i), -100, 100, 0, 200)
+      map(xa1(t + i), -100, 100, 0, 97),
+      map(xa1(t + i), -100, 100, 0, 97),
+      map(xa2(t + i), -100, 100, 0, 97)
     );
     line(xa1(t + i), ya1(t + i), xa2(t + i) + 20, ya2(t + i) + 20);
     circle(xa1(t + i), ya1(t + i), 5);
     circle(xa2(t + i) + 20, ya2(t + i) + 20, 5);
     strokeWeight(1);
     fill(
-      50,
-      map(x1(t + i), -100, 100, 200, 0),
-      map(x2(t + i), -100, 100, 0, 200)
+      map(xa1(t + i), -100, 100, 230, 0),
+      map(x1(t + i), -100, 100, 231, 0),
+      map(x2(t + i), -100, 100, 232, 0)
     );
     stroke(
-      50,
-      map(x1(t + i), -100, 100, 200, 0),
-      map(x2(t + i), -100, 100, 0, 200)
+      map(xa1(t + i), -100, 100, 230, 0),
+      map(x1(t + i), -100, 100, 231, 0),
+      map(x2(t + i), -100, 100, 232, 0)
     );
     line(x1(t + i), y1(t + i), x2(t + i) + 20, y2(t + i) + 20);
     circle(x1(t + i), y1(t + i), 5);
