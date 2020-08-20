@@ -3,17 +3,35 @@ function setup() {
 }
 let t = 0;
 function draw() {
-  background("#dadada");
+  background("#050505");
   translate(width / 2, -5 * height);
-  fill("#0f0f0f");
   // rotate(PI/4);
-  stroke("#0f0f0f");
   for (let i = 0; i < 800; i++) {
-    strokeWeight(1.5);
-    line(xa1(t + i), ya1(t + i), xa2(t + i), ya2(t + i));
+    strokeWeight(2);
+    fill(
+      50,
+      map(xa1(t + i), -100, 100, 0, 200),
+      map(xa2(t + i), -100, 100, 0, 200)
+    );
+    stroke(
+      50,
+      map(xa1(t + i), -100, 100, 0, 200),
+      map(xa2(t + i), -100, 100, 0, 200)
+    );
+    line(xa1(t + i), ya1(t + i), xa2(t + i) + 20, ya2(t + i) + 20);
     circle(xa1(t + i), ya1(t + i), 5);
-    circle(xa2(t + i), ya2(t + i), 5);
-    strokeWeight(1.5);
+    circle(xa2(t + i) + 20, ya2(t + i) + 20, 5);
+    strokeWeight(1);
+    fill(
+      50,
+      map(x1(t + i), -100, 100, 200, 0),
+      map(x2(t + i), -100, 100, 0, 200)
+    );
+    stroke(
+      50,
+      map(x1(t + i), -100, 100, 200, 0),
+      map(x2(t + i), -100, 100, 0, 200)
+    );
     line(x1(t + i), y1(t + i), x2(t + i) + 20, y2(t + i) + 20);
     circle(x1(t + i), y1(t + i), 5);
     circle(x2(t + i) + 20, y2(t + i) + 20, 5);
