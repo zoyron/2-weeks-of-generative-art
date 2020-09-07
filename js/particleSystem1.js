@@ -64,7 +64,7 @@ class Particle {
 
 function init() {
   particlesArray = [];
-  let numberOfParticles = (canvas.width * canvas.height) / 1350;
+  let numberOfParticles = (canvas.width * canvas.height) / 1650;
   for (let i = 0; i < numberOfParticles; i++) {
     let size = Math.random() * 6 + 1;
     let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
@@ -95,7 +95,7 @@ function connect() {
         (particlesArray[a].y - particlesArray[b].y) *
           (particlesArray[a].y - particlesArray[b].y);
       if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-        opacityVal = 0.9 - distance / 10000;
+        opacityVal = 0.9 - distance / 20000;
         ctx.strokeStyle = "rgba(0,30,75," + opacityVal + ")";
         ctx.lineWidth = 1;
         ctx.beginPath();
