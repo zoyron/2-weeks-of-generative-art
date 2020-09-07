@@ -8,7 +8,7 @@ let particlesArray;
 let mouse = {
   x: null,
   y: null,
-  radius: (canvas.height / 80) * (canvas.width / 80),
+  radius: (canvas.height / 150) * (canvas.width / 150),
 };
 
 window.addEventListener("mousemove", (event) => {
@@ -32,7 +32,7 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-    ctx.fillStyle = "#8c5523";
+    ctx.fillStyle = "#001e31";
     ctx.fill();
   }
   // check particle position
@@ -64,14 +64,14 @@ class Particle {
 
 function init() {
   particlesArray = [];
-  let numberOfParticles = (canvas.width * canvas.height) / 9000;
+  let numberOfParticles = (canvas.width * canvas.height) / 1350;
   for (let i = 0; i < numberOfParticles; i++) {
-    let size = Math.random() * 5 + 1;
+    let size = Math.random() * 6 + 1;
     let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
     let y = Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
-    let dirX = Math.random() * 4 - 2.5;
-    let dirY = Math.random() * 4 - 2.5;
-    let col = "#8c5523";
+    let dirX = Math.random() * 3.5 - 2;
+    let dirY = Math.random() * 3.5 - 2;
+    let col = "#001e31";
     particlesArray.push(new Particle(x, y, dirX, dirY, size, col));
   }
 }
@@ -86,6 +86,7 @@ function animate() {
 }
 
 function connect() {
+  let opacityVal = 1;
   for (let a = 0; a < particlesArray.length; a++) {
     for (let b = a; b < particlesArray.length; b++) {
       let distance =
@@ -94,7 +95,8 @@ function connect() {
         (particlesArray[a].y - particlesArray[b].y) *
           (particlesArray[a].y - particlesArray[b].y);
       if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-        ctx.strokeStyle = `rgba(140,85,31,1)`;
+        opacityVal = 0.9 - distance / 10000;
+        ctx.strokeStyle = "rgba(0,30,75," + opacityVal + ")";
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -110,6 +112,11 @@ window.addEventListener("resize", () => {
   canvas.height = innerHeight;
   mouse.radius = (canvas.height / 100) * (canvas.width / 100);
   init();
+});
+
+window.addEventListener("mouseout", () => {
+  mouse.x = undefined;
+  mouse.y = undefined;
 });
 
 init();
