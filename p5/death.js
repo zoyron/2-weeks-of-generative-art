@@ -17,7 +17,7 @@ function draw() {
   let t = frameCount / 60; // update time
 
   // create a random number of snowflakes each frame
-  for (let i = 0; i < random(10); i++) {
+  for (let i = 0; i < random(40); i++) {
     snowflakes.push(new snowflake()); // append snowflake object
   }
 
@@ -35,7 +35,7 @@ function snowflake() {
   // fill(random(255),random(255),random(255));
   // initialize coordinates
   this.posX = 0;
-  this.posY = random(-50, 0);
+  this.posY = random(height, height + 50);
   this.initialangle = random(0, 2 * PI);
   this.size = random(1, 2);
 
@@ -50,10 +50,10 @@ function snowflake() {
     this.posX = width / 2 + this.radius * sin(angle);
 
     // different size snowflakes fall at slightly different y speeds
-    this.posY += pow(this.size, 0.5);
+    this.posY -= pow(this.size, 0.5);
 
     // delete snowflake if past end of screen
-    if (this.posY > height) {
+    if (this.posY < 0) {
       let index = snowflakes.indexOf(this);
       snowflakes.splice(index, 1);
     }
